@@ -1,15 +1,16 @@
 import discord
 from discord.ext import commands, tasks
 import random
-import os
 import sys
 
-GIF_CHANNEL_ID = int(os.getenv("GIF_CHANNEL_ID"))
+GIF_CHANNEL_ID = None
 gif_urls = []
 bot = None
 
-def init_gifs(bot_instance):
+def init_gifs(bot_instance, gif_channel_id):
+    global GIF_CHANNEL_ID
     global bot
+    GIF_CHANNEL_ID = gif_channel_id
     bot = bot_instance
 
 @tasks.loop(hours=24)

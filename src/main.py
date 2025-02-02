@@ -15,7 +15,7 @@ bot.add_command(tic_tac_toe)
 bot.add_command(gif)
 
 init_tictactoe(bot)
-init_gifs(bot)
+init_gifs(bot, int(os.getenv("GIF_CHANNEL_ID")))
 
 @bot.event
 async def on_ready():
