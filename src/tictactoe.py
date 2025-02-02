@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 import random
 
+
 game_started = False
 bot = None
 
