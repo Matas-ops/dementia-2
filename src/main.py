@@ -10,8 +10,6 @@ from gif import gif, init_gifs, fetch_gifs
 
 load_dotenv()
 
-time.sleep(1)
-
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 bot.add_command(tic_tac_toe)
