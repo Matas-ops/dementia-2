@@ -14,14 +14,17 @@ board = ['⬜', '⬜', '⬜',
 
 numbers = [i for i in '1️⃣  2️⃣  3️⃣  4️⃣  5️⃣  6️⃣  7️⃣  8️⃣  9️⃣ '.split(' ') if i]
 
+
 def init_tictactoe(bot_instance):
     global bot
     bot = bot_instance
+
 
 def display_board():
     return f"{board[0]} {board[1]} {board[2]}\n" \
            f"{board[3]} {board[4]} {board[5]}\n" \
            f"{board[6]} {board[7]} {board[8]}"
+
 
 def check_winner(symbol):
     # Check rows, columns, and diagonals
@@ -35,12 +38,15 @@ def check_winner(symbol):
         return True
     return False
 
+
 def is_board_full():
     return '⬜' not in board
+
 
 def reset_game():
     global board
     board = ['⬜', '⬜', '⬜', '⬜', '⬜', '⬜', '⬜', '⬜', '⬜']
+
 
 # Command to play against the bot or another user
 @commands.command(name='toe')
@@ -142,6 +148,7 @@ async def tic_tac_toe(ctx, opponent: discord.User = None):
         await ctx.send(f"An unexpected error occurred: {e}")
         reset_game()
         game_started = False
+
 
 def minimax(new_board, player):
     avail_spots = [i for i in range(len(new_board)) if new_board[i] == '⬜']

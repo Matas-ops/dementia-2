@@ -2,11 +2,8 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-COPY /src/main.py /app
-COPY /src/tictactoe.py /app
-COPY /src/gif.py /app
-COPY /src/server.py /app
-
+COPY /src/*.py /app
+COPY data/quotes.txt /app/data/quotes.txt
 COPY requirements.txt /app
 
 RUN pip install --no-cache-dir -r requirements.txt

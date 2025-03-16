@@ -3,6 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 hostName = "0.0.0.0"
 serverPort = 8080
 
+
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -12,6 +13,7 @@ class MyServer(BaseHTTPRequestHandler):
         self.wfile.write(bytes("<body>", "utf-8"))
         self.wfile.write(bytes("<p>Yuh</p>", "utf-8"))
         self.wfile.write(bytes("</body></html>", "utf-8"))
+
 
 def run_dummy_server():
     # idiotic way to make sure google cloud is satisfied
