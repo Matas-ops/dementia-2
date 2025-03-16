@@ -2,7 +2,7 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-COPY /src/*.py /app
+COPY /src/*.py /app/
 COPY data/quotes.txt /app/data/quotes.txt
 COPY requirements.txt /app
 
