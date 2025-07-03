@@ -22,7 +22,7 @@ async def fetch_gifs():
     if channel:
         print("Channel found, fetching...")
         messages = [msg async for msg in channel.history(limit=sys.maxsize)]
-        gif_urls = set(msg.content for msg in messages if msg.content.endswith(('.gif')))
+        gif_urls = list(set(msg.content for msg in messages if msg.content.endswith(('.gif'))))
         print("Done fetching")
 
 
