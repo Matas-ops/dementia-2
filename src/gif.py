@@ -28,6 +28,7 @@ async def fetch_gifs():
 
 @commands.command(name='gif')
 async def gif(ctx):
+    print(f'Received gif command: {ctx.message.content}')
     if not gif_urls:
         await ctx.send("No GIFs found or the list hasn't been updated yet.")
         return

@@ -66,6 +66,7 @@ async def fetch_verse_of_day():
 
 @commands.command(name='quote')
 async def quote(ctx):
+    print(f'Received quote command: {ctx.message.content}')
     choice = random.randint(1, 99) % 3
     match choice:
         case 0:

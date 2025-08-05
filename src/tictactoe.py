@@ -51,6 +51,7 @@ def reset_game():
 # Command to play against the bot or another user
 @commands.command(name='toe')
 async def tic_tac_toe(ctx, opponent: discord.User = None):
+    print(f'Received tictactoe command: {ctx.message.content}')
     try:
         global game_started
         if game_started:
