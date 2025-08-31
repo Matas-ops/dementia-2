@@ -7,6 +7,7 @@ from server import run_dummy_server
 from tictactoe import tic_tac_toe, init_tictactoe
 from gif import gif, init_gifs, fetch_gifs
 from quote import quote, init_quote, fetch_quote_of_day, fetch_verse_of_day
+from remind import remind, init_remind
 
 load_dotenv()
 
@@ -15,10 +16,12 @@ bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 bot.add_command(tic_tac_toe)
 bot.add_command(gif)
 bot.add_command(quote)
+bot.add_command(remind)
 
 init_tictactoe(bot)
 init_gifs(bot, int(os.getenv("GIF_CHANNEL_ID")))
 init_quote(os.getenv("QUOTE_API_KEY"), os.getenv("BIBLE_API_KEY"))
+init_remind(bot)
 
 @bot.event
 async def on_ready():
