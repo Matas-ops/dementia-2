@@ -10,6 +10,8 @@ GIF_CHANNEL_ID is where the bot can grab all available gifs and display one of t
 
 Project contains server to satisfy google cloud
 
+I will need to fix requirements.txt
+
 ## Example for running docker
 
 docker build -t dementia2:dev -f Dockerfile.dev .
