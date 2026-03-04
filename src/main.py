@@ -8,6 +8,7 @@ from tictactoe import tic_tac_toe, init_tictactoe
 from gif import gif, init_gifs, fetch_gifs
 from quote import quote, init_quote, fetch_quote_of_day, fetch_verse_of_day
 from remind import remind, init_remind
+from message_handler import handle_message
 
 load_dotenv()
 
@@ -29,6 +30,10 @@ async def on_ready():
     fetch_gifs.start()
     fetch_quote_of_day.start()
     fetch_verse_of_day.start()
+
+@bot.event
+async def on_message(message):
+    await handle_message(bot, message)
 
 t1 = threading.Thread(target=run_dummy_server)
 t1.start()
