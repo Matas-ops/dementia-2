@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+﻿#!/bin/bash
 set -euo pipefail
 
 IMAGE_NAME="${IMAGE_NAME:-dementia:latest}"
@@ -21,7 +21,7 @@ if ! command -v docker >/dev/null 2>&1; then
 fi
 
 echo "Building image ${IMAGE_NAME} from ${DOCKERFILE}..."
-docker build -t "${IMAGE_NAME}" -f "${DOCKERFILE}" "${CONTEXT}" --progress=plain
+docker build -t "${IMAGE_NAME}" -f "${DOCKERFILE}" "${CONTEXT}"
 
 existing_id="$(docker ps -a --filter "name=^/${CONTAINER_NAME}$" --format '{{.ID}}')"
 if [ -n "$existing_id" ]; then
