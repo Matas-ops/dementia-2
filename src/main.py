@@ -5,7 +5,7 @@ import os
 import threading
 from server import run_dummy_server
 from tictactoe import tic_tac_toe, init_tictactoe
-from gif import gif, init_gifs, fetch_gifs
+from gif import gif, init_gifs, fetch_gifs, daily_gif
 from quote import quote, init_quote, fetch_quote_of_day, fetch_verse_of_day
 from remind import remind, init_remind
 from message_handler import handle_message
@@ -33,6 +33,7 @@ init_remind(bot)
 async def on_ready():
     print("Bot is ready.")
     fetch_gifs.start()
+    daily_gif.start()
     #get_tiktok_videos.start()
     #fetch_quote_of_day.start()
     #fetch_verse_of_day.start()

@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands, tasks
 import random
 import sys
+from datetime import time, timezone
 
 GIF_CHANNEL_ID = None
 gif_urls = None
@@ -24,6 +25,30 @@ async def fetch_gifs():
         messages = [msg async for msg in channel.history(limit=sys.maxsize)]
         gif_urls = list(set(msg.content for msg in messages if msg.content.endswith('.gif')))
         print("Done fetching")
+
+
+@tasks.loop(time=time(hour=7, tzinfo=timezone.utc))
+async def daily_gif():
+    global gif_urls
+
+    if not gif_urls:
+        await fetch_gifs()
+
+    if not gif_urls:
+        print("No GIFs found for daily_gif.")
+        return
+
+    channel = bot.get_channel(BOT_CHANNEL_ID)
+    if not channel:
+        print(f"BOT_CHANNEL_ID {BOT_CHANNEL_ID} is invalid or the bot doesn't have access to it.")
+        return
+
+    gif_url = random.choice(gif_urls)
+    embed = discord.Embed()
+    embed.set_image(url=gif_url)
+
+    await channel.send(embed=embed)
+    print(f"Sent daily GIF: {gif_url}")
 
 
 @commands.command(name='gif')
