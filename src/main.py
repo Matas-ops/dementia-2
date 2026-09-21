@@ -25,7 +25,7 @@ bot.add_command(remind)
 
 init_tictactoe(bot)
 #init_quote(os.getenv("QUOTE_API_KEY"), os.getenv("BIBLE_API_KEY"))
-init_gifs(bot, int(os.getenv("GIF_CHANNEL_ID")))
+init_gifs(bot, int(os.getenv("GIF_CHANNEL_ID")), int(os.getenv("BOT_CHANNEL_ID")))
 init_remind(bot)
 #init_tiktok_tokens(os.getenv("TIKTOK_TOKENS").split(","))
 

@@ -5,14 +5,17 @@ import sys
 from datetime import time, timezone
 
 GIF_CHANNEL_ID = None
+BOT_CHANNEL_ID = None
 gif_urls = None
 bot = None
 
 
-def init_gifs(bot_instance, gif_channel_id):
+def init_gifs(bot_instance, gif_channel_id, bot_channel_id):
     global GIF_CHANNEL_ID
+    global BOT_CHANNEL_ID
     global bot
     GIF_CHANNEL_ID = gif_channel_id
+    BOT_CHANNEL_ID = bot_channel_id
     bot = bot_instance
 
 
