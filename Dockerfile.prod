@@ -1,12 +1,18 @@
-FROM python:3.13-slim
+FROM cgr.dev/chainguard/python:latest-dev AS build
 
 WORKDIR /app
+COPY requirements.txt .
 
+RUN python -m venv /app/venv \
+    && /app/venv/bin/pip install --no-cache-dir -r requirements.txt
+
+FROM cgr.dev/chainguard/python:latest
+
+WORKDIR /app
+COPY --from=build /app/venv /app/venv
 COPY /src/*.py /app/
-COPY requirements.txt /app
-
-RUN pip install --no-cache-dir -r requirements.txt
+ENV PATH="/app/venv/bin:$PATH"
 
 EXPOSE 8080
 
-CMD ["python", "main.py"]
+ENTRYPOINT ["/app/venv/bin/python", "main.py"]

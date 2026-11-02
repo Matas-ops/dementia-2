@@ -1,6 +1,6 @@
 # Discord bot
 
-Python version used: 3.13
+Python version used: 3.15
 
 Packages are listed in requirements.txt
 
